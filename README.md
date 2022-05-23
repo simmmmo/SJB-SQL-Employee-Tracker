@@ -111,18 +111,23 @@ Quit
 
 ###### Walkthrough video links
 View All Employees, All Departments & All Roles
+
 https://drive.google.com/file/d/1OwX7F96ahoQy8R5yG81LkEkUFum19XXr/view
 
-Add Employees, 
+Add Employees
+
 https://drive.google.com/file/d/1B4wStgatIL27S-6WQuKJ6BRXGMhw8MPX/view
 
 Update Employee's role and manager & delete Employee
+
 https://drive.google.com/file/d/1cT7cWgVNBE25N2KJxMgLhxKK0DXXbdWg/view
 
 Add department, add role to new department. Delete role
+
 https://drive.google.com/file/d/1-fPsz5aP0Te7qzRwI5WJz3nl1C8Yjl5N/view
 
 View Employees by manager and by department. View departments total salary spend
+
 https://drive.google.com/file/d/1XwNynfmr3DyoiCgcbQ_bi-DrRmkToMzV/view
 
 
