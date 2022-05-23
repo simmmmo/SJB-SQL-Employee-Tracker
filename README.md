@@ -16,15 +16,15 @@ SO THAT I can organize and plan my business
 
 ###### Using Employee Tracker
 
-![exampleOfUsingEmployeeTracker](./assets/Note%20Taker.gif)
+![exampleOfUsingEmployeeTracker](./assets/employee-tracker-overview.gif)
 
 ###### Example of adding employee
 
-![exampleOfAddingEmployee](./assets/Note-Taker-Add-Remove-Notes.gif)
+![exampleOfAddingEmployee](./assets/employee-tracker-add.gif)
 
-###### Example of deleting employee
+###### Example of updating employee's roll and manager. Deleting employee
 
-![exampleOfDeletingEmployee](./assets/JSON-DB-Example.jpg)
+![exampleOfDeletingEmployee](./assets/employee-tracker-update-delete.gif)
 
 ## Installation 
 
@@ -75,8 +75,8 @@ npm start
 
 Follow the menu prompts to VIEW/UPDATE/DELETE employee records
 
-* Avaliable Options
-Run 
+* Available Menu Options
+
 ```bash
 View All Employees 
 View Employees by Manager 
@@ -95,25 +95,35 @@ Delete Department
 Quit
 ```
 
+###### Addition information
+* Note - Before starting application, ensure MySQL credenitals have been updated
+* Note - If a row is deleted that has child rows referencing the foreign key, the referencing cell's value will be updated to NULL. Effected Employee/role/department data will need to be reassigned.
+
 ## Technology 
 * Node.js
 * Express.js
 * Inquirer
 * MySQL
-
+* console.table
 
 
 ## Project Links
 
 ###### Walkthrough video links
 View All Employees, All Departments & All Roles
+https://drive.google.com/file/d/1OwX7F96ahoQy8R5yG81LkEkUFum19XXr/view
 
+Add Employees, 
+https://drive.google.com/file/d/1B4wStgatIL27S-6WQuKJ6BRXGMhw8MPX/view
 
-Add Employees, update Employee's role and manager & delete Employee
+Update Employee's role and manager & delete Employee
+https://drive.google.com/file/d/1cT7cWgVNBE25N2KJxMgLhxKK0DXXbdWg/view
 
+Add department, add role to new department. Delete role
+https://drive.google.com/file/d/1-fPsz5aP0Te7qzRwI5WJz3nl1C8Yjl5N/view
 
-View Employees by Manager and department. View Department salary total
-
+View Employees by manager and by department. View departments total salary spend
+https://drive.google.com/file/d/1XwNynfmr3DyoiCgcbQ_bi-DrRmkToMzV/view
 
 
 ###### Repo name

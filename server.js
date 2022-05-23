@@ -1,5 +1,5 @@
+// Import and require dependencies
 const express = require('express');
-// Import and require mysql2
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const consoleTable = require('console.table');
@@ -16,11 +16,13 @@ const db = mysql.createConnection(
   {
     host: 'localhost',
     user: 'root',
-    password: 'W0lverinE',
+    // Update MySQL credentials
+    password: 'Pass123',
     database: 'employee_db'
   },
 );
 
+// Start database connect, display welcome message and run main menu function
 db.connect(err => {
   if (err) throw err;
   console.log(`
@@ -33,12 +35,13 @@ db.connect(err => {
  |                                                      |
  |                                                      |
  |                                                      |
-   -----------------------------------------------------
+  ------------------------------------------------------
 `)
   mainMenu();
 });
 
 
+// Primary menu function of application
 function mainMenu(){
   inquirer.prompt([
   {
@@ -122,7 +125,7 @@ console.log('\n');
 }
 
 
-
+// Employee function - View All Employee data with role and department details 
 function viewEmployees() {
   const query = 
   `SELECT 
@@ -149,7 +152,7 @@ function viewEmployees() {
   });
 };
 
-
+// Employee function - Add new Employee and assign role and manager details 
 function addEmployee() {
   db.query('SELECT * FROM role', (err, res) => {
     if (err) console.log(err);
@@ -216,7 +219,7 @@ function addEmployee() {
   });
 }
 
-
+// Employee function - Update Employee role 
 function updateEmployee() {
   db.query('SELECT * FROM employee', (err, res) => {
     if (err) console.log(err);
@@ -270,7 +273,7 @@ function updateEmployee() {
   });
 }
 
-
+// Employee function - Update Employee's manager details 
 function updateEmployeeManager() {
   db.query('SELECT * FROM employee', (err, res) => {
     if (err) console.log(err);
@@ -329,6 +332,7 @@ function updateEmployeeManager() {
   });
 }
 
+// Employee function - Delete Employee
 function deleteEmployee () {
   db.query('SELECT * FROM employee', (err, res) => {
     if (err) console.log(err);
@@ -364,19 +368,20 @@ function deleteEmployee () {
   });
 };
 
+// Role function - View all roles with the associated department details 
 function viewRoles() {
   const query = `SELECT role.id, role.title, department.name AS department, role.salary
   FROM role
   LEFT JOIN department ON (department.id = role.department_id)`;
   db.query(query, (err, res) => {
       if (err) throw err;
-      console.log('\n');
       console.table(res);
       console.log('\n');
       mainMenu();
   });
 };
 
+// Role function - Add new role and assign to department
 function addRoles() {
   db.query('SELECT * FROM department', (err, res) => {
     if (err) console.log(err);
@@ -412,7 +417,6 @@ function addRoles() {
           department_id: res.departmentList
       },(err, res)=>{
           if(err) throw err;
-          viewRoles();
           console.log('\n');
           console.log(`Added new role to the database`);
           mainMenu();
@@ -421,7 +425,7 @@ function addRoles() {
 });
 }
 
-
+// Role function - Delete role
 function deleteRoles() {
   db.query('SELECT * FROM role', (err, res) => {
     if (err) console.log(err);
@@ -448,16 +452,15 @@ function deleteRoles() {
       },
   ], (err, res) => {
       if (err) throw err;
-  console.log('\n');
-      viewRoles();
       console.log('Role has been deleted');
-  console.log('\n');
+      console.log('\n');
       mainMenu();
     });
   });
 });
 };
 
+// Department function - View all departments 
 function viewDepartments() {
   const query = 
   `SELECT id, name AS department FROM department`;
@@ -469,6 +472,7 @@ function viewDepartments() {
   })
 };
 
+// Department function - Create new department 
 function addDepartment() {
     inquirer.prompt([
       {
@@ -483,16 +487,14 @@ function addDepartment() {
         name: res.addDepartmentName
       }, (err, res) => {
         if (err) throw err;
-    console.log('\n');
-        viewDepartments();
-    console.log('\n');
         console.log(`Added department to the database`);
-    console.log('\n');
+        console.log('\n');
         mainMenu();
       });
     });
 }
 
+// Department function - Delete department 
 function deleteDepartment() {
   db.query('SELECT * FROM department', (err, res) => {
     if (err) console.log(err);
@@ -528,7 +530,7 @@ function deleteDepartment() {
   });
 }
 
-
+// View function - View all employees that sit under a manager 
 function viewEmployeeByManager() {
   db.query('SELECT id, first_name, last_name FROM employee WHERE manager_id IS NULL ORDER BY id ASC;', (err, res) => {
     if (err) console.log(err);
@@ -564,15 +566,16 @@ function viewEmployeeByManager() {
           WHERE employee.manager_id = ?`
       db.query(query, res.manager,(err, res)=>{
       if (err) throw err;
-  console.log('\n');
+      console.log('\n');
       console.table(res);
-  console.log('\n');
+      console.log('\n');
       mainMenu();
     });
   });
 });
 };
 
+// View function - View all employees that sit under a certain department 
 function viewEmployeeByDepartment() {
   db.query('SELECT * FROM department', (err, res) => {
     if (err) console.log(err);
@@ -617,7 +620,7 @@ function viewEmployeeByDepartment() {
 });
 };
 
-
+// View function - View the salary totals for each department 
 function viewDepartmentSalaryTotal() {
   db.query('SELECT * FROM department', (err, res) => {
     if (err) console.log(err);
