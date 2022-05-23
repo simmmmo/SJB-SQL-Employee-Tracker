@@ -2,7 +2,7 @@
 
 ##  Description
 
-Employee Trackeis to build a command-line application to manage a company's employee database. This CMS appplication is built using Node.js, Inquirer, and MySQL.
+Employee Trackeis to build a command-line application to manage a company's employee database. This CMS application is built using Node.js, Inquirer, and MySQL.
 
 ## User Story
 
